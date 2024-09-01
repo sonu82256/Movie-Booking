@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv"
 import userRoutes from "./routes/auth.routes.js";
+import movieRouter from "./routes/movieList.routes.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -18,7 +20,10 @@ mongoose
 
 app.use(express.json());
 
+app.use(cookieParser());
+
 app.use("/api/auth", userRoutes);
+app.use("/api/movie-list", movieRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`server is running on port ${process.env.PORT}`);
