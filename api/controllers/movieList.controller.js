@@ -2,8 +2,8 @@ import Movie from "../models/movie.model.js";
 
 export const addMovie = async (req, res) => {
 
-    const {adminId, movieName, moviePoster} = req.body;
-    const newMovie = new Movie({adminId, movieName, moviePoster})
+    const {adminId, movieName, date, time, price, seat} = req.body;
+    const newMovie = new Movie({adminId, movieName, moviePoster, date, time, price, seat})
     try {
         await newMovie.save();
         res.status(201).json("movie addes successfully");
