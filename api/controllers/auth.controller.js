@@ -89,12 +89,12 @@ export const admin_signin = async (req, res) => {
     }
 };
 
-export const signOut = async (req, res, next) => {
+export const signOut = async (req, res) => {
     try {
       res.clearCookie("access_token");
       res.status(200).json("User has been logged out!");
     } catch (error) {
-      next(error);
+      res.send(error)
     }
   };
   
